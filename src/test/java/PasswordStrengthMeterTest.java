@@ -25,6 +25,10 @@ public class PasswordStrengthMeterTest {
         assertStrength("abc1!Add",PasswordStrength.STRONG);
     }
 
+
+
+    // 한가지 조건제외 충족하는 경우들
+
     // 길이만 8글자 미만이고 나머지 조건은 충족하는 경우
     @Test
     void meetsOtherCriteria_except_for_Length_Then_Normal(){
@@ -37,22 +41,26 @@ public class PasswordStrengthMeterTest {
         assertStrength("ab!@ABqwer",PasswordStrength.NORMAL);
     }
 
-    // 값이 없는 경우: null
+    // 대문자를 포함하지 않고 나머지 조건을 충족하는 경우
+    @Test
+    void meetsOtherCriteria_except_for_Uppercase_Then_Normal(){
+        assertStrength("aab12!@df",PasswordStrength.NORMAL);
+    }
+
+
+
+    //값이 없는 경우
+
+    // null
     @Test
     void nullInput_Then_Invalid(){
         assertStrength(null,PasswordStrength.INVALID);
     }
 
-    // 값이 없는 경우: 빈 문자열
+    // 빈 문자열
     @Test
     void emptyInput_Then_Invalid(){
         assertStrength("",PasswordStrength.INVALID);
-    }
-
-    // 대문자를 포함하지 않고 나머지 조건을 충족하는 경우
-    @Test
-    void meetsOtherCriteria_except_for_Uppercase_Then_Normal(){
-        assertStrength("aab12!@df",PasswordStrength.NORMAL);
     }
 
 }
