@@ -14,7 +14,7 @@ public class PasswordStrengthMeter {
         boolean containsUpp = meetsContainingUppercaseCriteria(s);
         if(containsUpp) metCounts++;
 
-        if(metCounts == 1) return PasswordStrength.WEAK;
+        if(metCounts <= 1) return PasswordStrength.WEAK;
         if(metCounts == 2) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
