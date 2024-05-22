@@ -1,4 +1,6 @@
-import javax.swing.*;
+package org.example;
+
+import org.example.PasswordStrength;
 
 public class PasswordStrengthMeter {
     public PasswordStrength meter(String s){
