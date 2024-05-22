@@ -49,7 +49,7 @@ public class PasswordStrengthMeterTest {
 
 
 
-    //값이 없는 경우
+    // 값이 없는 경우
 
     // null
     @Test
@@ -61,6 +61,17 @@ public class PasswordStrengthMeterTest {
     @Test
     void emptyInput_Then_Invalid(){
         assertStrength("",PasswordStrength.INVALID);
+    }
+
+
+
+    // 한가지 경우만 충족하는 경우
+
+    // 길이가 8글자 이상인 조건만 충족하는 경우
+
+    @Test
+    void meetsOnlyLengthCriteria_then_weak(){
+        assertStrength("abdefghi",PasswordStrength.WEAK);
     }
 
 }
